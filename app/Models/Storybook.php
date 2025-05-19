@@ -48,7 +48,8 @@ class Storybook extends Model
     public function get_rating_report()
     {
         return $this->belongsToMany(User::class, "rating", "id_storybook", "id_user")
-            ->using(Rating::class);
+            ->using(Rating::class)
+            ->withPivot(['rating', 'comments']);
     }
 
     // one to many from storybook to pages
