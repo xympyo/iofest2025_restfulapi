@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer("read_count")->default(0);
             $table->integer("pages_number");
             $table->integer("is_approved")->default(0);
-            $table->foreignId("id_language")->constrained("language");
+            $table->foreignId("id_language")->constrained("languages");
             $table->timestamps();
         });
     }
