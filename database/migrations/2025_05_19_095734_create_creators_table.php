@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('creators', function (Blueprint $table) {
             $table->id();
             $table->integer("id_user");
-            $table->foreignId("id_storybook")->constrained("storybook")->onDelete("CASCADE");
+            $table->foreignId("id_storybook")->constrained("storybooks")->onDelete("CASCADE");
             $table->timestamps();
         });
     }

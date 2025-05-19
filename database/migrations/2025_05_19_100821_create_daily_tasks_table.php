@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('daily_tasks', function (Blueprint $table) {
+        Schema::create('daily_task', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("id_user")->constrained("user")->onDelete("cascade");
+            $table->foreignId("id_user")->constrained("users")->onDelete("cascade");
             $table->foreignId("id_storybook_reads")->constrained("storybook_reads");
             $table->integer("reading_time");
             $table->integer("words_count");

@@ -11,6 +11,8 @@ class Creators extends Model
     /** @use HasFactory<\Database\Factories\CreatorsFactory> */
     use HasFactory;
 
+    protected $table = "creators";
+
     protected $fillable = [
         "id_user",
         "id_storybook",

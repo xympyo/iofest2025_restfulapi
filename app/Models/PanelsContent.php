@@ -10,6 +10,8 @@ class PanelsContent extends Model
     /** @use HasFactory<\Database\Factories\PanelsContentFactory> */
     use HasFactory;
 
+    protected $table = "panels_content";
+
     protected $fillable = [
         "id_panels",
         "image",

@@ -11,6 +11,8 @@ class Storybook extends Model
     /** @use HasFactory<\Database\Factories\StorybookFactory> */
     use HasFactory;
 
+    protected $table = "storybook";
+
     protected $fillable = [
         "title",
         "description",

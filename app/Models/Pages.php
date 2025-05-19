@@ -10,6 +10,8 @@ class Pages extends Model
     /** @use HasFactory<\Database\Factories\PagesFactory> */
     use HasFactory;
 
+    protected $table = "pages";
+
     protected $fillable = [
         "storybook_id",
     ];

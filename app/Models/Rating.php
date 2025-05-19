@@ -10,6 +10,8 @@ class Rating extends Model
     /** @use HasFactory<\Database\Factories\RatingFactory> */
     use HasFactory;
 
+    protected $table = "rating";
+
     protected $fillable = [
         "id_user",
         "id_storybook",

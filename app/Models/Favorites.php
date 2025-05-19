@@ -10,7 +10,8 @@ class Favorites extends Model
 {
     /** @use HasFactory<\Database\Factories\FavoritesFactory> */
     use HasFactory;
-    use SoftDeletes;
+
+    protected $table = "favorites";
 
     protected $fillable = [
         "id_user",

@@ -10,6 +10,8 @@ class DailyTask extends Model
     /** @use HasFactory<\Database\Factories\DailyTaskFactory> */
     use HasFactory;
 
+    protected $table = "daily_task";
+
     protected $fillable = [
         "id_user",
         "id_storybook_reads",
