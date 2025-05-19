@@ -9,4 +9,8 @@ class ActivityCategory extends Model
 {
     /** @use HasFactory<\Database\Factories\ActivityCategoryFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "category",
+    ];
 }

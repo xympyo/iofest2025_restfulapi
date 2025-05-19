@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('panels', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("id_pages")->constrained("pages")->onDelete("cascade");
+            $table->integer("panels_number");
             $table->timestamps();
         });
     }

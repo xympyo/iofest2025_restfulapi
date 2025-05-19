@@ -10,7 +10,6 @@ class Storybook extends Model
 {
     /** @use HasFactory<\Database\Factories\StorybookFactory> */
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         "title",

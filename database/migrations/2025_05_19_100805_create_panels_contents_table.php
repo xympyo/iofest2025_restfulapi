@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('panels_contents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("id_panels")->constrained("panels")->onDelete("cascade");
+            $table->string("image");
+            $table->string("text");
+            $table->string("text_align");
             $table->timestamps();
         });
     }

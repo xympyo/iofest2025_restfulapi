@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('storybooks', function (Blueprint $table) {
             $table->id();
-            $table->softDeletes();
             $table->string("title");
             $table->string("description");
             $table->integer("storybook_words");
-            $table->time("read_time");
+            $table->integer("read_time");
             $table->integer("read_count")->default(0);
             $table->integer("pages_number");
             $table->integer("is_approved")->default(0);

@@ -9,4 +9,11 @@ class Activity extends Model
 {
     /** @use HasFactory<\Database\Factories\ActivityFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "title",
+        "activity_category_id",
+        "description",
+        "duration_minutes",
+    ];
 }

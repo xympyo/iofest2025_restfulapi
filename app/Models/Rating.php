@@ -9,4 +9,11 @@ class Rating extends Model
 {
     /** @use HasFactory<\Database\Factories\RatingFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "id_user",
+        "id_storybook",
+        "rating",
+        "comments",
+    ];
 }

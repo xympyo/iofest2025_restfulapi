@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('creators', function (Blueprint $table) {
             $table->id();
-            $table->softDeletes();
             $table->integer("id_user");
             $table->foreignId("id_storybook")->constrained("storybook")->onDelete("CASCADE");
             $table->timestamps();

@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('daily_tasks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("id_user")->constrained("user")->onDelete("cascade");
+            $table->foreignId("id_storybook_reads")->constrained("storybook_reads");
+            $table->integer("reading_time");
+            $table->integer("words_count");
+            $table->integer("cognitive_count");
+            $table->integer("sensory_count");
+            $table->integer("motor_count");
+            $table->integer("emotional_count");
             $table->timestamps();
         });
     }

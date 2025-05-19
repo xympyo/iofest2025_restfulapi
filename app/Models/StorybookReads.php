@@ -9,4 +9,9 @@ class StorybookReads extends Model
 {
     /** @use HasFactory<\Database\Factories\StorybookReadsFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "id_user",
+        "id_storybook",
+    ];
 }

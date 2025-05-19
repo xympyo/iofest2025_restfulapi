@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('storybook_reads', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("id_user")->constrained("user")->onDelete("cascade");
+            $table->foreignId("id_storybook")->constrained("storybook")->onDelete("cascade");
             $table->timestamps();
         });
     }

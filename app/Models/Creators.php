@@ -10,7 +10,6 @@ class Creators extends Model
 {
     /** @use HasFactory<\Database\Factories\CreatorsFactory> */
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         "id_user",

@@ -9,4 +9,8 @@ class Language extends Model
 {
     /** @use HasFactory<\Database\Factories\LanguageFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "languages",
+    ];
 }

@@ -9,4 +9,9 @@ class Panels extends Model
 {
     /** @use HasFactory<\Database\Factories\PanelsFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "id_pages",
+        "panels_number",
+    ];
 }
