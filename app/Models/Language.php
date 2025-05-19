@@ -15,4 +15,10 @@ class Language extends Model
     protected $fillable = [
         "languages",
     ];
+
+    // one to one from language to storybook
+    public function storybook()
+    {
+        return $this->hasOne(Storybook::class, "id_language", "id");
+    }
 }

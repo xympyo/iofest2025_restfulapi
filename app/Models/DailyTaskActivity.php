@@ -16,4 +16,6 @@ class DailyTaskActivity extends Model
         "daily_task_id",
         "activity_id",
     ];
+
+    // PIVOT TABLE
 }

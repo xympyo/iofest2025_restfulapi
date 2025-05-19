@@ -15,4 +15,16 @@ class Pages extends Model
     protected $fillable = [
         "storybook_id",
     ];
+
+    // many to one from pages to storybook
+    public function storybook()
+    {
+        return $this->belongsTo(Storybook::class, "storybook_id", "id");
+    }
+
+    // one to many from pages to panels
+    public function panels()
+    {
+        return $this->hasMany(Panels::class, "id_pages", "id");
+    }
 }

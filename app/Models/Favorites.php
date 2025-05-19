@@ -17,4 +17,6 @@ class Favorites extends Model
         "id_user",
         "id_storybook",
     ];
+
+    // PIVOT TABLE
 }

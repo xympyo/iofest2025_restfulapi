@@ -18,4 +18,16 @@ class Activity extends Model
         "description",
         "duration_minutes",
     ];
+
+    // one to one from activity to daily_task_activity
+    public function daily_task_activity()
+    {
+        return $this->hasMany(DailyTaskActivity::class, "activity_id", "id");
+    }
+
+    // one to many from activity to activity_category
+    public function activity_category()
+    {
+        return $this->belongsTo(ActivityCategory::class, "activity_category_id", "id");
+    }
 }

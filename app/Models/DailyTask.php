@@ -22,4 +22,23 @@ class DailyTask extends Model
         "motor_count",
         "emotional_count",
     ];
+
+    // one to many from daily_task to activity with pivot daily_task_activity
+    public function activitiesDone()
+    {
+        return $this->belongsToMany(Activity::class, "daily_task_activity", "daily_task_id", "activity_id")
+            ->using(DailyTaskActivity::class);
+    }
+
+    // one to many from daily_task to storybook_reads
+    public function storybook_reads()
+    {
+        return $this->hasMany(StorybookReads::class, "id_daily_task", "id");
+    }
+
+    // many to one from daily_task to user
+    public function user()
+    {
+        return $this->belongsTo(User::class, "id_user", "id");
+    }
 }

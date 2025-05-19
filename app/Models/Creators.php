@@ -17,4 +17,6 @@ class Creators extends Model
         "id_user",
         "id_storybook",
     ];
+
+    // PIVOT TABLE
 }

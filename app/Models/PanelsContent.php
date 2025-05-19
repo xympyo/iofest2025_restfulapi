@@ -18,4 +18,10 @@ class PanelsContent extends Model
         "text",
         "text_align",
     ];
+
+    // many to one from panels_content to panels
+    public function panels()
+    {
+        return $this->belongsTo(Panels::class, "id_panels", "id");
+    }
 }

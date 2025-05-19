@@ -15,4 +15,10 @@ class ActivityCategory extends Model
     protected $fillable = [
         "category",
     ];
+
+    // many to one from activity_category to activity
+    public function activity()
+    {
+        return $this->hasMany(Activity::class, "activity_category_id", "id");
+    }
 }

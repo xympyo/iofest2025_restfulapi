@@ -18,4 +18,6 @@ class Rating extends Model
         "rating",
         "comments",
     ];
+
+    // PIVOT TABLE
 }
