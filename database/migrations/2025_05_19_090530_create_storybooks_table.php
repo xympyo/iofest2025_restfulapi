@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer("pages_number");
             $table->integer("is_approved")->default(0);
             $table->foreignId("id_language")->constrained("languages");
+            $table->string("background_image")->nullable();
+            $table->string("storybook_profile");
             $table->timestamps();
         });
     }

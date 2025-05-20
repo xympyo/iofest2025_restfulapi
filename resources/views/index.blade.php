@@ -14,9 +14,16 @@
                 </a>
             </div>
             <div class="flex items-center gap-6">
-                <a href="#get-premium" class="font-semibold text-[#30313E] hover:text-[#F8B6B6] transition">Get Premium</a>
-                <a href="{{ route('login') }}"
-                    class="font-semibold text-[#30313E] hover:text-[#F8B6B6] transition">Login</a>
+                @auth
+                    <span class="font-semibold text-[#30313E]">{{ Auth::user()->username }}</span>
+                    <a href="{{ route('create_storybook') }}"
+                        class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-md hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Create
+                        Storybook</a>
+                @else
+                    <a href="#get-premium" class="font-semibold text-[#30313E] hover:text-[#F8B6B6] transition">Get Premium</a>
+                    <a href="{{ route('login') }}"
+                        class="font-semibold text-[#30313E] hover:text-[#F8B6B6] transition">Login</a>
+                @endauth
             </div>
         </nav>
         <!-- Hero Section -->
@@ -29,9 +36,15 @@
                     class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Try
                     Premium</a>
                 <span class="text-white font-semibold">or</span>
-                <a href="#create-storybook"
+                @auth
+                <a href="{{ route('create_storybook') }}"
                     class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Create
                     your own Storybook</a>
+                @else
+                <a href="{{ route('login') }}"
+                    class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Create
+                    your own Storybook</a>
+                @endauth
             </div>
         </section>
         <!-- Get Coins Section -->

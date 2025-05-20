@@ -21,7 +21,9 @@ class Storybook extends Model
         "read_count",
         "pages_number",
         "is_approved",
-        "id_language"
+        "id_language",
+        "background_image",
+        "storybook_profile",
     ];
 
     // one to many from storybook to user with pivot table creators
