@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('panels_contents', function (Blueprint $table) {
+        Schema::create('panels_content', function (Blueprint $table) {
             $table->id();
             $table->foreignId("id_panels")->constrained("panels")->onDelete("cascade");
             $table->string("image");
-            $table->string("text");
-            $table->string("text_align");
+            $table->string("top_text")->nullable();
+            $table->string("top_text_align")->nullable();
+            $table->string("middle_text")->nullable();
+            $table->string("middle_text_align")->nullable();
+            $table->string("bottom_text")->nullable();
+            $table->string("bottom_text_align")->nullable();
             $table->timestamps();
         });
     }

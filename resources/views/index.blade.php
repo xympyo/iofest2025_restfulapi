@@ -16,9 +16,27 @@
             <div class="flex items-center gap-6">
                 @auth
                     <span class="font-semibold text-[#30313E]">{{ Auth::user()->username }}</span>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="inline-block">
+                        @csrf
+                        <button type="submit"
+                            class="px-6 py-3 rounded-lg bg-[#ff5e5e] text-white font-bold text-md shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#ffbaba]/40 transition">
+                            Log Out
+                        </button>
+                    </form>
                     <a href="{{ route('create_storybook') }}"
-                        class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-md hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Create
-                        Storybook</a>
+                        class="inline-block px-6 py-3 rounded-lg bg-[#9F9CCC] text-white font-bold text-md shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#c3b9e6]/40 transition mr-4">
+                        Create Storybook
+                    </a>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const logoutForm = document.getElementById('logout-form');
+                            if (logoutForm) {
+                                logoutForm.addEventListener('submit', function() {
+                                    sessionStorage.clear();
+                                });
+                            }
+                        });
+                    </script>
                 @else
                     <a href="#get-premium" class="font-semibold text-[#30313E] hover:text-[#F8B6B6] transition">Get Premium</a>
                     <a href="{{ route('login') }}"
@@ -37,13 +55,13 @@
                     Premium</a>
                 <span class="text-white font-semibold">or</span>
                 @auth
-                <a href="{{ route('create_storybook') }}"
-                    class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Create
-                    your own Storybook</a>
+                    <a href="{{ route('create_storybook') }}"
+                        class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Create
+                        your own Storybook</a>
                 @else
-                <a href="{{ route('login') }}"
-                    class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Create
-                    your own Storybook</a>
+                    <a href="{{ route('login') }}"
+                        class="px-6 py-2 rounded-lg bg-[#bdb6e6] text-white font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-2xl hover:ring-4 hover:ring-[#c3b9e6]/40 transition text-center">Create
+                        your own Storybook</a>
                 @endauth
             </div>
         </section>

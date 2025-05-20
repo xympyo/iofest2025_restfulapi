@@ -14,6 +14,7 @@ class Pages extends Model
 
     protected $fillable = [
         "storybook_id",
+        "page_information"
     ];
 
     // many to one from pages to storybook

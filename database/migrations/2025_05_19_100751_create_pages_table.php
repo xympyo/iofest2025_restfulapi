@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->foreignId("storybook_id")->constrained("storybooks")->onDelete("cascade");
+            $table->integer("page_information");
             $table->timestamps();
         });
     }

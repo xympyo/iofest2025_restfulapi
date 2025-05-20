@@ -15,8 +15,12 @@ class PanelsContent extends Model
     protected $fillable = [
         "id_panels",
         "image",
-        "text",
-        "text_align",
+        "top_text",
+        "top_text_align",
+        "middle_text",
+        "middle_text_align",
+        "bottom_text",
+        "bottom_text_align",
     ];
 
     // many to one from panels_content to panels

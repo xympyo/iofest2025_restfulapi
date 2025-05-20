@@ -86,6 +86,16 @@
                         one in your TappyTale Application!</a><br>
                     <span class="text-sm text-[#23232B]">It’s FREE! Takes less than a minute.</span>
                 </div>
+                @if ($errors->any())
+                    <div class="mb-4 w-full text-center text-red-500 font-semibold">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="mb-4 w-full text-center text-red-500 font-semibold">{{ session('error') }}</div>
+                @endif
                 <form method="POST" action="{{ route('login') }}" class="space-y-4">
                     @csrf
                     <div>
