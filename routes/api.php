@@ -11,6 +11,10 @@ Route::get('/user', function (Request $request) {
 
 // api/v1/storybook
 Route::prefix('v1')->group(function () {
+    // Activities
+    Route::get('activities', [\App\Http\Controllers\API\V1\ActivityController::class, 'index']);
+    Route::get('activities/random', [\App\Http\Controllers\API\V1\ActivityController::class, 'random']);
+
     // Authentication
     Route::post('register', [\App\Http\Controllers\API\V1\AuthController::class, 'register']);
     Route::post('login', [\App\Http\Controllers\API\V1\AuthController::class, 'login']);

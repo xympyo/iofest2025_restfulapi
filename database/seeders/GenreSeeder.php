@@ -35,8 +35,4 @@ class GenreSeeder extends Seeder
             ]);
         }
     }
-    public function storybooks()
-    {
-        return $this->belongsToMany(Storybook::class, 'genre_storybook', 'genre_id', 'storybook_id');
-    }
 }

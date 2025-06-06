@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
+    protected $table = 'activity';
     /** @use HasFactory<\Database\Factories\ActivityFactory> */
     use HasFactory;
-
-    protected $table = "activity";
 
     protected $fillable = [
         "title",

@@ -30,10 +30,11 @@ class ActivitySeeder extends Seeder
         ];
 
         foreach ($activities as $activity) {
-            DB::table('activities')->insert([
+            DB::table('activity')->insert([
                 'activity_category_id' => $activity['activity_category_id'],
-                'activity_name' => $activity['activity_name'],
-                'activity_description' => $activity['activity_description'],
+                'title' => $activity['activity_name'],
+                'description' => $activity['activity_description'],
+                'duration_minutes' => 10,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

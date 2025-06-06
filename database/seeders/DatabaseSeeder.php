@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ActivityCategory;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -45,8 +46,8 @@ class DatabaseSeeder extends Seeder
                     'pages_number' => $pagesNum = rand(1, 6),
                     'is_approved' => rand(0, 1),
                     'id_language' => $languages[array_rand($languages)],
-                    'background_image' => 'https://picsum.photos/seed/bg'.uniqid().'/1920/1080',
-                    'storybook_profile' => 'https://picsum.photos/seed/profile'.uniqid().'/400/400',
+                    'background_image' => 'https://picsum.photos/seed/bg' . uniqid() . '/1920/1080',
+                    'storybook_profile' => 'https://picsum.photos/seed/profile' . uniqid() . '/400/400',
                 ]);
                 $storybookIds[] = $storybook->id;
                 // Attach creator
@@ -81,11 +82,11 @@ class DatabaseSeeder extends Seeder
                         // Map to correct fields
                         $panelContentData = [
                             'id_panels' => $panel->id,
-                            'image' => 'https://picsum.photos/seed/panel'.uniqid().'/640/1080',
+                            'image' => 'https://picsum.photos/seed/panel' . uniqid() . '/640/1080',
                         ];
                         foreach (['top_text', 'middle_text', 'bottom_text'] as $idx => $field) {
                             $panelContentData[$field] = $texts[$idx];
-                            $panelContentData[$field.'_align'] = $texts[$idx] ? $aligns[$idx] : null;
+                            $panelContentData[$field . '_align'] = $texts[$idx] ? $aligns[$idx] : null;
                         }
                         \App\Models\PanelsContent::create($panelContentData);
                     }
@@ -117,5 +118,9 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
+
+        ActivityCategorySeeder::class;
+        ActivitySeeder::class;
+        GenreSeeder::class;
     }
 }

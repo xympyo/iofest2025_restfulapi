@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityCategory extends Model
 {
+    protected $table = 'activity_category';
     /** @use HasFactory<\Database\Factories\ActivityCategoryFactory> */
     use HasFactory;
-
-    protected $table = "activity_category";
 
     protected $fillable = [
         "category",
