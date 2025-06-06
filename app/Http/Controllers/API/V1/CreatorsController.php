@@ -14,7 +14,8 @@ class CreatorsController extends Controller
      */
     public function index()
     {
-        //
+        $creators = \App\Models\Creators::all();
+        return \App\Http\Resources\V1\CreatorResource::collection($creators);
     }
 
     /**

@@ -16,7 +16,8 @@ class StorybookController extends Controller
      */
     public function index()
     {
-        return new StorybookCollection(Storybook::paginate());
+        $storybooks = Storybook::with(['genres', 'pages', 'get_creators'])->paginate();
+        return new StorybookCollection($storybooks);
     }
 
     /**

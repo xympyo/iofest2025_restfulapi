@@ -24,27 +24,33 @@ class StorybookResource extends JsonResource
             'pagesNumber' => $this->pages_number,
             'isApproved' => $this->is_approved,
             'genres' => $this->genres->pluck('genre_name'),
-'pages' => $this->whenLoaded('pages', function () {
-    return $this->pages->map(function ($page) {
-        return [
-            'id' => $page->id,
-            'page_number' => $page->page_number,
-            'panels' => $page->panels->map(function ($panel) {
-                return [
-                    'id' => $panel->id,
-                    'panel_number' => $panel->panel_number,
-                    'panel_contents' => $panel->panelContents->map(function ($content) {
-                        return [
-                            'id' => $content->id,
-                            'type' => $content->type,
-                            'content' => $content->content,
-                        ];
-                    }),
-                ];
+            'storybookCreator' => UserResource::collection($this->whenLoaded('get_creators')),
+            'pages' => $this->whenLoaded('pages', function () {
+                return $this->pages->map(function ($page) {
+                    return [
+                        'id' => $page->id,
+                        'page_number' => $page->page_information,
+                        'panels' => $page->panels->map(function ($panel) {
+                            return [
+                                'id' => $panel->id,
+                                'panel_number' => $panel->panels_number,
+                                'panel_contents' => $panel->panelContents->map(function ($content) {
+                                    return [
+                                        'id' => $content->id,
+                                        'image' => $content->image,
+                                        'top_text' => $content->top_text,
+                                        'top_text_align' => $content->top_text_align,
+                                        'middle_text' => $content->middle_text,
+                                        'middle_text_align' => $content->middle_text_align,
+                                        'bottom_text' => $content->bottom_text,
+                                        'bottom_text_align' => $content->bottom_text_align,
+                                    ];
+                                }),
+                            ];
+                        }),
+                    ];
+                });
             }),
-        ];
-    });
-}),
             'idLanguage' => $this->id_language,
             'backgroundImage' => $this->background_image,
             'storybookProfile' => $this->storybook_profile,

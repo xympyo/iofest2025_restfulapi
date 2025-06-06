@@ -23,6 +23,16 @@ Route::prefix('v1')->group(function () {
     // User's storybook performance analytics
     Route::middleware('auth:sanctum')->get('my-storybooks/performance', [\App\Http\Controllers\API\V1\StorybookAnalyticsController::class, 'performance']);
 
+    // Home Page Endpoint
+    Route::middleware('auth:sanctum')->get('home', [\App\Http\Controllers\API\V1\HomePageController::class, 'index']);
+
+    // Daily Tasks Endpoints
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('daily-tasks', [\App\Http\Controllers\API\V1\DailyTaskController::class, 'index']);
+        Route::post('daily-tasks/{activity_id}/complete', [\App\Http\Controllers\API\V1\DailyTaskController::class, 'complete']);
+        Route::get('daily-tasks/summary', [\App\Http\Controllers\API\V1\DailyTaskController::class, 'summary']);
+    });
+
     Route::apiResource('storybook', \App\Http\Controllers\API\V1\StorybookController::class);
     Route::apiResource('creator', \App\Http\Controllers\API\V1\CreatorsController::class);
 });

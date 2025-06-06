@@ -31,8 +31,7 @@ class Storybook extends Model
     // one to many from storybook to user with pivot table creators
     public function get_creators()
     {
-        return $this->belongsToMany(User::class, "creators", "id_storybook", "id_user")
-            ->using(Creators::class);
+        return $this->belongsToMany(User::class, "creators", "id_storybook", "id_user");
     }
 
     // one to many from storybook to daily_task

@@ -23,11 +23,30 @@ class DailyTask extends Model
         "emotional_count",
     ];
 
-    // one to many from daily_task to activity with pivot daily_task_activity
+    // Relationship to DailyTaskActivity pivot records
+    public function dailyTaskActivities()
+    {
+        return $this->hasMany(DailyTaskActivity::class, 'daily_task_id');
+    }
+
+    // Activities with completion info (many-to-many)
     public function activitiesDone()
     {
         return $this->belongsToMany(Activity::class, "daily_task_activity", "daily_task_id", "activity_id")
-            ->using(DailyTaskActivity::class);
+            ->using(DailyTaskActivity::class)
+            ->withPivot(['is_completed', 'completed_at']);
+    }
+
+    // Helper: completed activities
+    public function completedActivities()
+    {
+        return $this->activitiesDone()->wherePivot('is_completed', true);
+    }
+
+    // Helper: incomplete activities
+    public function incompleteActivities()
+    {
+        return $this->activitiesDone()->wherePivot('is_completed', false);
     }
 
     // one to many from daily_task to storybook_reads
