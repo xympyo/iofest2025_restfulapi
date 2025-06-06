@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class PanelsContent extends Model
 {
+    public function panel()
+    {
+        return $this->belongsTo(\App\Models\Panels::class, 'id_panels', 'id');
+    }
+
     /** @use HasFactory<\Database\Factories\PanelsContentFactory> */
     use HasFactory;
 

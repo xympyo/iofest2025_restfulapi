@@ -40,6 +40,7 @@ class StorybookController extends Controller
      */
     public function show(Storybook $storybook)
     {
+        $storybook->load(['genres', 'pages.panels.panelContents']);
         return new StorybookResource($storybook);
     }
 

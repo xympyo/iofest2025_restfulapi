@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\Genre;
+
 class Storybook extends Model
 {
     /** @use HasFactory<\Database\Factories\StorybookFactory> */
@@ -52,6 +54,12 @@ class Storybook extends Model
         return $this->belongsToMany(User::class, "rating", "id_storybook", "id_user")
             ->using(Rating::class)
             ->withPivot(['rating', 'comments']);
+    }
+
+    // many-to-many with genres
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'genre_storybook', 'storybook_id', 'genre_id');
     }
 
     // one to many from storybook to pages

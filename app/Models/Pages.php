@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pages extends Model
 {
+
     /** @use HasFactory<\Database\Factories\PagesFactory> */
     use HasFactory;
 

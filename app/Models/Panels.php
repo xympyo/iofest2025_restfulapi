@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Panels extends Model
 {
+    public function panelContents()
+    {
+        return $this->hasMany(\App\Models\PanelsContent::class, 'id_panels', 'id');
+    }
+
     /** @use HasFactory<\Database\Factories\PanelsFactory> */
     use HasFactory;
 
