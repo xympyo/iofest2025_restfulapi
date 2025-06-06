@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Creators;
 use App\Http\Requests\StoreCreatorsRequest;
 use App\Http\Requests\UpdateCreatorsRequest;

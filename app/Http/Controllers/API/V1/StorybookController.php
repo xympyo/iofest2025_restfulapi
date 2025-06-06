@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Storybook;
 use App\Http\Requests\StoreStorybookRequest;
 use App\Http\Requests\UpdateStorybookRequest;
+use App\Http\Resources\V1\StorybookResource;
+use App\Http\Resources\V1\StorybookCollection;
 
 class StorybookController extends Controller
 {
@@ -13,7 +16,7 @@ class StorybookController extends Controller
      */
     public function index()
     {
-        //
+        return new StorybookCollection(Storybook::paginate());
     }
 
     /**
@@ -37,7 +40,7 @@ class StorybookController extends Controller
      */
     public function show(Storybook $storybook)
     {
-        //
+        return new StorybookResource($storybook);
     }
 
     /**
