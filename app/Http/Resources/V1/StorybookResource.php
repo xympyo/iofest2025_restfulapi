@@ -14,6 +14,17 @@ class StorybookResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // Prepare ratings as array, not Eloquent collection
+        $ratings = $this->ratings ? $this->ratings->map(function ($item) {
+            return [
+                'user_id' => $item->id_user,
+                'rating' => $item->rating,
+                'comments' => $item->comments,
+            ];
+        })->toArray() : [];
+        $average_rating = $this->ratings ? $this->ratings->pluck('rating')->avg() : null;
+        $ratings_count = $this->ratings ? $this->ratings->count() : 0;
+
         return [
             'id' => $this->id,
             'title' => $this->title,
@@ -55,6 +66,10 @@ class StorybookResource extends JsonResource
             'backgroundImage' => $this->background_image,
             'storybookProfile' => $this->storybook_profile,
             'createdAt' => $this->created_at,
+            // Ratings summary
+            'average_rating' => $average_rating,
+            'ratings_count' => $ratings_count,
+            'ratings' => $ratings,
         ];
     }
 }

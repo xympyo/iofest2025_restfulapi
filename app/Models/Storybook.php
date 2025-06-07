@@ -48,12 +48,12 @@ class Storybook extends Model
     }
 
     // one to many from storybook to user with pivot table rating
-    public function get_rating_report()
+    // Each storybook has many ratings from users
+    public function ratings()
     {
-        return $this->belongsToMany(User::class, "rating", "id_storybook", "id_user")
-            ->using(Rating::class)
-            ->withPivot(['rating', 'comments']);
+        return $this->hasMany(\App\Models\Rating::class, 'id_storybook', 'id');
     }
+
 
     // many-to-many with genres
     public function genres()

@@ -19,7 +19,7 @@ class ActivityController extends Controller
     // Get random activities for daily tasks
     public function random(Request $request)
     {
-        $count = $request->input('count', 5);
+        $count = $request->input('count', 1);
         $activities = Activity::inRandomOrder()->limit($count)->with('activity_category')->get();
         return response()->json($activities);
     }
