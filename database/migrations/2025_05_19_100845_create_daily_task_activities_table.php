@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId("daily_task_id")->constrained("daily_task")->onDelete("cascade");
             $table->foreignId("activity_id")->constrained("activity")->onDelete("cascade");
+            $table->integer("understanding")->nullable();
+            $table->integer("participation")->nullable();
+            $table->text("notes")->nullable();
             $table->timestamps();
         });
     }

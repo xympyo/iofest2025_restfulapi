@@ -17,6 +17,9 @@ class DailyTaskActivity extends Model
         "activity_id",
         "is_completed",
         "completed_at",
+        "understanding",
+        "participation",
+        "notes",
     ];
 
     // Relationships

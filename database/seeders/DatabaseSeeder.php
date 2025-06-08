@@ -119,8 +119,11 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        ActivityCategorySeeder::class;
-        ActivitySeeder::class;
-        GenreSeeder::class;
+        $this->call([
+            ActivityCategorySeeder::class,
+            ActivitySeeder::class,
+            GenreSeeder::class,
+        ]);
+
     }
 }

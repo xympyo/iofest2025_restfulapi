@@ -29,7 +29,9 @@ Route::prefix('v1')->group(function () {
     // Daily Tasks Endpoints
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('daily-tasks', [\App\Http\Controllers\API\V1\DailyTaskController::class, 'index']);
+        Route::get('daily-tasks/today/full', [\App\Http\Controllers\API\V1\HomePageController::class, 'todayFull']);
         Route::post('daily-tasks/{activity_id}/complete', [\App\Http\Controllers\API\V1\DailyTaskController::class, 'complete']);
+        Route::post('daily-tasks/storybook/complete', [\App\Http\Controllers\API\V1\DailyTaskController::class, 'completeStorybook']);
         Route::get('daily-tasks/summary', [\App\Http\Controllers\API\V1\DailyTaskController::class, 'summary']);
     });
 

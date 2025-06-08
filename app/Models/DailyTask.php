@@ -33,7 +33,7 @@ class DailyTask extends Model
     public function activitiesDone()
     {
         return $this->belongsToMany(Activity::class, "daily_task_activity", "daily_task_id", "activity_id")
-            ->using(DailyTaskActivity::class)
+            ->using(\App\Models\DailyTaskActivityPivot::class)
             ->withPivot(['is_completed', 'completed_at']);
     }
 
@@ -49,10 +49,10 @@ class DailyTask extends Model
         return $this->activitiesDone()->wherePivot('is_completed', false);
     }
 
-    // one to many from daily_task to storybook_reads
-    public function storybook_reads()
+    // one to one from daily_task to storybook_reads
+    public function storybook_read()
     {
-        return $this->hasMany(StorybookReads::class, "id_daily_task", "id");
+        return $this->belongsTo(StorybookReads::class, 'id_storybook_reads', 'id');
     }
 
     // many to one from daily_task to user

@@ -95,4 +95,63 @@ class HomePageController extends Controller
             'filtered_storybooks' => $filteredStorybooks !== null ? \App\Http\Resources\V1\StorybookResource::collection($filteredStorybooks) : null,
         ]);
     }
+
+    // GET /api/v1/daily-tasks/today/full
+    public function todayFull(Request $request)
+    {
+        $user = Auth::user();
+        $today = now()->format('Y-m-d');
+
+        $dailyTasks = \App\Models\DailyTask::with([
+            'storybook_read',
+            'dailyTaskActivities.activity.activity_category',
+        ])
+        ->where('id_user', $user->id)
+        ->whereDate('created_at', $today)
+        ->get();
+
+        // Format the response to include activity details
+        $result = $dailyTasks->map(function($task) {
+            return [
+                'id' => $task->id,
+                'id_user' => $task->id_user,
+                'id_storybook_reads' => $task->id_storybook_reads,
+                'reading_time' => $task->reading_time,
+                'words_count' => $task->words_count,
+                'cognitive_count' => $task->cognitive_count,
+                'sensory_count' => $task->sensory_count,
+                'motor_count' => $task->motor_count,
+                'emotional_count' => $task->emotional_count,
+                'created_at' => $task->created_at,
+                'updated_at' => $task->updated_at,
+                'storybook_read' => $task->storybook_read,
+                'daily_task_activities' => collect($task->dailyTaskActivities)->map(function($activity) {
+                    $act = $activity->activity;
+                    $cat = $act && $act->activity_category ? $act->activity_category : null;
+                    return [
+                        'id' => $activity->id,
+                        'daily_task_id' => $activity->daily_task_id,
+                        'activity_id' => $activity->activity_id,
+                        'is_completed' => $activity->is_completed,
+                        'completed_at' => $activity->completed_at,
+                        'understanding' => $activity->understanding,
+                        'participation' => $activity->participation,
+                        'notes' => $activity->notes,
+                        'created_at' => $activity->created_at,
+                        'updated_at' => $activity->updated_at,
+                        'activity' => $act ? [
+                            'title' => $act->title,
+                            'description' => $act->description,
+                            'activity_category_id' => $act->activity_category_id,
+                            'activity_category_name' => $cat ? $cat->name : null,
+                        ] : null,
+                    ];
+                }),
+            ];
+        });
+
+        return response()->json([
+            'daily_tasks' => $result
+        ]);
+    }
 }

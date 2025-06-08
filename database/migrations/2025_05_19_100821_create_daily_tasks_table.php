@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('daily_task', function (Blueprint $table) {
             $table->id();
             $table->foreignId("id_user")->constrained("users")->onDelete("cascade");
-            $table->foreignId("id_storybook_reads")->constrained("storybook_reads");
-            $table->integer("reading_time");
-            $table->integer("words_count");
-            $table->integer("cognitive_count");
-            $table->integer("sensory_count");
-            $table->integer("motor_count");
-            $table->integer("emotional_count");
+            $table->foreignId("id_storybook_reads")->nullable()->constrained("storybook_reads");
+            $table->integer("reading_time")->nullable();
+            $table->integer("words_count")->nullable();
+            $table->integer("cognitive_count")->nullable();
+            $table->integer("sensory_count")->nullable();
+            $table->integer("motor_count")->nullable();
+            $table->integer("emotional_count")->nullable();
             $table->timestamps();
         });
     }
