@@ -147,21 +147,21 @@
                                     <!-- Panel text: top, middle, bottom layout -->
                                     <div class="relative w-full h-full">
                                         <template x-if="panel.top_text">
-                                            <div :class="'absolute left-0 right-0 top-2 text-[#23232B] font-bold w-full'"
+                                            <div :class="'absolute px-2 left-0 right-0 top-2 text-[#23232B] font-bold w-full'"
                                                 :style="'text-align:' + textAlignCss(panel.top_text_align)">
-                                                <span x-text="panel.top_text"></span>
+                                                <span x-text="panel.top_text" :class="'storybook-panel-text storybook-panel-text-rows-' + panels.length"></span>
                                             </div>
                                         </template>
                                         <template x-if="panel && panel.middle_text">
-                                            <div :class="'absolute left-0 right-0 top-1/2 -translate-y-1/2 text-[#23232B] font-semibold w-full'"
+                                            <div :class="'absolute px-2 left-0 right-0 top-1/2 -translate-y-1/2 text-[#23232B] font-semibold w-full'"
                                                 :style="'text-align:' + textAlignCss(panel.middle_text_align)">
-                                                <span x-text="panel.middle_text"></span>
+                                                <span x-text="panel.middle_text" :class="'storybook-panel-text storybook-panel-text-rows-' + panels.length"></span>
                                             </div>
                                         </template>
                                         <template x-if="panel && panel.bottom_text">
-                                            <div :class="'absolute left-0 right-0 bottom-2 text-[#23232B] font-medium w-full'"
+                                            <div :class="'absolute px-2 left-0 right-0 bottom-2 text-[#23232B] font-medium w-full'"
                                                 :style="'text-align:' + textAlignCss(panel.bottom_text_align)">
-                                                <span x-text="panel.bottom_text"></span>
+                                                <span x-text="panel.bottom_text" :class="'storybook-panel-text storybook-panel-text-rows-' + panels.length"></span>
                                             </div>
                                         </template>
                                     </div>

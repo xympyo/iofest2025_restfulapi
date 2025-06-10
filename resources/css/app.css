@@ -11,3 +11,30 @@
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
 }
+
+/* =====================
+   Storybook Panel Font Sizes
+   Adjust these values as needed for 1, 2, or 3 row panels
+   ===================== */
+:root {
+    --storybook-panel-fontsize-1: 1.25rem; /* normal (20px) */
+    --storybook-panel-fontsize-2: 1rem;  /* medium (16px) */
+    --storybook-panel-fontsize-3: 0.8rem; /* small (12.8px) */
+    /* Responsive line heights for panel text */
+    --storybook-panel-lineheight-1: 1.1; /* normal, tight but readable */
+    --storybook-panel-lineheight-2: 1.05; /* tighter for 2 rows */
+    --storybook-panel-lineheight-3: 1.01; /* very tight for 3 rows */
+}
+.storybook-panel-text-rows-1 { font-size: var(--storybook-panel-fontsize-1); line-height: var(--storybook-panel-lineheight-1); }
+.storybook-panel-text-rows-2 { font-size: var(--storybook-panel-fontsize-2); line-height: var(--storybook-panel-lineheight-2); }
+.storybook-panel-text-rows-3 { font-size: var(--storybook-panel-fontsize-3); line-height: var(--storybook-panel-lineheight-3); }
+
+/* Storybook Panel Text Wrapping and Alignment */
+.storybook-panel-text {
+    white-space: pre-line; /* Allows manual line breaks and normal wrapping */
+    word-break: normal;   /* Only break at spaces, not in the middle of words */
+    overflow-wrap: break-word; /* Prevents overflow, breaks only at word boundaries */
+    width: 100%;
+    display: block;
+}
+/* ===================== */
