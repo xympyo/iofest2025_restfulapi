@@ -48,16 +48,15 @@ class HomePageController extends Controller
             })
             ->first();
 
-        // Newest Storybook: approved, latest
-        $newestStorybook = Storybook::where('is_approved', 1)
+        // Newest Storybooks: approved, latest, paginated
+        $newestStorybooks = Storybook::where('is_approved', 1)
             ->orderByDesc('created_at')
-            ->first();
+            ->paginate(15);
 
-        // Most Viewed Storybook: most entries in storybook_reads
-        $mostViewedStorybook = Storybook::withCount('storybook_reads')
-            ->orderByDesc('storybook_reads_count')
-            ->where('is_approved', 1)
-            ->first();
+        // Most Viewed Storybooks: by read_count, paginated
+        $mostViewedStorybooks = Storybook::where('is_approved', 1)
+            ->orderByDesc('read_count')
+            ->paginate(15);
 
         // Recommended Storybooks: not read by current user, by read_count
         $readStorybookIds = $user->storybook_reads->pluck('id_storybook')->unique();
@@ -88,8 +87,8 @@ class HomePageController extends Controller
             'user' => $userInfo,
             'daily_task_summary' => $dailyTaskSummary,
             'storybook_of_the_day' => $storybookOfTheDay ? new \App\Http\Resources\V1\StorybookResource($storybookOfTheDay) : null,
-            'newest_storybook' => $newestStorybook ? new \App\Http\Resources\V1\StorybookResource($newestStorybook) : null,
-            'most_viewed_storybook' => $mostViewedStorybook ? new \App\Http\Resources\V1\StorybookResource($mostViewedStorybook) : null,
+            'newest_storybooks' => \App\Http\Resources\V1\StorybookResource::collection($newestStorybooks),
+            'most_viewed_storybooks' => \App\Http\Resources\V1\StorybookResource::collection($mostViewedStorybooks),
             'recommended_storybooks' => \App\Http\Resources\V1\StorybookResource::collection($recommendedStorybooks),
             'recent_storybooks' => \App\Http\Resources\V1\StorybookResource::collection($recentStorybooks),
             'filtered_storybooks' => $filteredStorybooks !== null ? \App\Http\Resources\V1\StorybookResource::collection($filteredStorybooks) : null,
