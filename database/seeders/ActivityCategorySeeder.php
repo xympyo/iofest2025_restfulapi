@@ -10,10 +10,10 @@ class ActivityCategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            'Kognitif',
-            'Sensorik',
-            'Motorik',
-            'Emosional',
+            'Cognitive',
+            'Sensory',
+            'Motory',
+            'Emotional',
         ];
 
         foreach ($categories as $category) {
