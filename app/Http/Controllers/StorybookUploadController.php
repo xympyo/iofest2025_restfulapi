@@ -54,7 +54,7 @@ class StorybookUploadController extends Controller
                 'read_count' => 0,
                 'pages_number' => $pagesNumber,
                 'is_approved' => 0,
-                'id_language' => 0, // default
+                'id_language' => isset($storybookData['id_language']) && $storybookData['id_language'] ? $storybookData['id_language'] : 1,
                 'background_image' => $backgroundImage,
                 'storybook_profile' => $profileImage,
             ]);

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('index');
@@ -29,3 +31,6 @@ Route::get('/confirm-storybook', function () {
 })->middleware(['auth'])->name('confirm_storybook');
 
 Route::post('/api/upload-storybook', [App\Http\Controllers\StorybookUploadController::class, 'upload'])->middleware(['auth']);
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::post('/admin/approve', [AdminController::class, 'approveStorybook']);

@@ -37,4 +37,10 @@ Route::prefix('v1')->group(function () {
 
     Route::apiResource('storybook', \App\Http\Controllers\API\V1\StorybookController::class);
     Route::apiResource('creator', \App\Http\Controllers\API\V1\CreatorsController::class);
+
+    // Storybook Reads endpoint
+    Route::middleware('auth:sanctum')->post('storybook-reads', [\App\Http\Controllers\StorybookReadsController::class, 'store']);
+
+    // AI Context endpoint
+    Route::middleware('auth:sanctum')->get('ai-context', [\App\Http\Controllers\API\V1\AIContextController::class, 'show']);
 });

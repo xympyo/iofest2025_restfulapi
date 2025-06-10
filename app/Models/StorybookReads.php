@@ -15,6 +15,7 @@ class StorybookReads extends Model
     protected $fillable = [
         "id_user",
         "id_storybook",
+        "id_daily_task",
     ];
 
     // many to one from storybook_reads to daily_task

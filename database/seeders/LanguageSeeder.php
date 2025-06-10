@@ -12,6 +12,7 @@ class LanguageSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \DB::table('languages')->updateOrInsert(['id' => 1], ['languages' => 'English']);
+        \DB::table('languages')->updateOrInsert(['id' => 2], ['languages' => 'Indonesia']);
     }
 }

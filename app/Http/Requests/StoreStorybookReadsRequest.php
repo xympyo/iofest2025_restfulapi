@@ -11,7 +11,7 @@ class StoreStorybookReadsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreStorybookReadsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id_storybook' => 'required|integer|exists:storybooks,id',
+'rating' => 'nullable|integer|min:1|max:5',
+'comments' => 'nullable|string|max:255',
         ];
     }
 }

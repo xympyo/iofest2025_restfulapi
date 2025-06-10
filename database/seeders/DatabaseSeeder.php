@@ -15,10 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // 1. Seed Languages
-        \App\Models\Language::insert([
-            ['languages' => 'Indonesia'],
-            ['languages' => 'English'],
-        ]);
+        $this->call(LanguageSeeder::class);
 
         // 2. Seed Users
         $users = collect();
