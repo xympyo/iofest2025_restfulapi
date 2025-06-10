@@ -10,21 +10,21 @@ class GenreSeeder extends Seeder
     public function run(): void
     {
         $genres = [
-            'Adventure',
-            'Fantasy',
-            'Mystery',
-            'Science Fiction',
-            'Non-fiction',
-            'Romance',
-            'Horror',
-            'Comedy',
-            'Educational',
-            'Historical',
-            'Poetry',
-            'Biography',
-            'Fairy Tale',
-            'Fable',
-            'Mythology',
+            'Petualangan',
+            'Fantasi',
+            'Misteri',
+            'Fiksi Ilmiah',
+            'Nonfiksi',
+            'Romansa',
+            'Horor',
+            'Komedi',
+            'Edukasi',
+            'Sejarah',
+            'Puisi',
+            'Biografi',
+            'Dongeng',
+            'Fabel',
+            'Mitologi',
         ];
 
         foreach ($genres as $genre) {
